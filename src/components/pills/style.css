@@ -1,0 +1,28 @@
+.pill-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  width: 100%;
+}
+
+.pill {
+  background: grey;
+  font-size: 1.3rem;
+  position: relative;
+  padding-right: 30px;
+}
+.pill-close {
+  position: absolute;
+  color: red;
+  right: 5px;
+  top: 5px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  padding-top: 4px;
+}
+.pill-close:hover {
+  background-color: #bbc7bb;
+}

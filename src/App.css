@@ -16,35 +16,5 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.pill {
-  background: grey;
-  font-size: 1.3rem;
-  position: relative;
-  padding-right: 30px;
-}
-.pill-close {
-  position: absolute;
-  color: red;
-  right: 10px;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.auto-complete-list-wrapper {
-  position: relative;
-}
-
-.auto-complete-list {
-  overflow-y: scroll;
-  max-height: 400px;
-  position: absolute;
-  width: 167px;
-  position: absolute;
-  z-index: 100;
-}
-
-ul.auto-complete-list li:hover {
-  background-color: gainsboro;
+  padding: 0 5%;
 }

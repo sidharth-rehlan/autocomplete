@@ -2,7 +2,7 @@ import React from "react";
 import User from "./User";
 
 function UsersList(props) {
-  console.log("userlist......", props);
+  console.log("user........");
   return (
     <table className="table userlist">
       <thead>
@@ -22,4 +22,4 @@ function UsersList(props) {
   );
 }
 
-export default UsersList;
+export default React.memo(UsersList);

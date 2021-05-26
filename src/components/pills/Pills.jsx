@@ -1,10 +1,11 @@
 import React from "react";
 import Pill from "./Pill";
+import "./style.css";
 
 function Pills(props) {
-  console.log(props);
+  console.log("......pillls");
   return (
-    <div>
+    <div className="pill-wrapper">
       {props.selectedUsers.map((user) => {
         return (
           <Pill
@@ -18,4 +19,4 @@ function Pills(props) {
   );
 }
 
-export default Pills;
+export default React.memo(Pills);

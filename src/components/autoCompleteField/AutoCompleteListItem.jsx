@@ -4,7 +4,7 @@ function AutoCompleteListItem(props) {
   return (
     <li
       className="list-group-item"
-      onClick={(e) => props.onClickHint(e, props.user)}
+      onClick={() => props.onClickHint(props.user)}
     >
       {props.user.name}
     </li>

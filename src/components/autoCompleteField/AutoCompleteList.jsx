@@ -1,8 +1,8 @@
 import React from "react";
 import AutoCompleteListItem from "./AutoCompleteListItem";
+import "./style.css";
 
 function AutoCompleteList(props) {
-  console.log(props.usersHints);
   return (
     <div className="auto-complete-list-wrapper">
       <ul className="list-group auto-complete-list">

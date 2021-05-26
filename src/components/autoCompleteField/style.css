@@ -1,0 +1,17 @@
+.auto-complete-list-wrapper {
+  position: relative;
+}
+
+.auto-complete-list {
+  overflow-y: scroll;
+  max-height: 400px;
+  position: absolute;
+  width: 204px;
+  position: absolute;
+  z-index: 100;
+  left: -102px;
+}
+
+ul.auto-complete-list li:hover {
+  background-color: gainsboro;
+}
