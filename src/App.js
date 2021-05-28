@@ -5,13 +5,16 @@ import UsersList from "./components/userList";
 import config from "./config";
 import "./App.css";
 import axios from "axios";
+//import { debounce } from "./utils/Utils";
+import { debounce } from "lodash";
+import useHint from "./hooks/useHint";
 
 function App() {
   const [usersData, setUsersData] = useState([]);
-  const [usersHints, setUsersHint] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [hintsDispay, setHintsDisplay] = useState(true);
   const inputRef = useRef();
+  const [usersHints, setUsersHints] = useHint();
 
   const fetchUsersData = async () => {
     const response = await axios.get(
@@ -27,30 +30,18 @@ function App() {
     setUsersData(data);
   }, []);
 
+  const createHintList = (e) => {
+    const enteredText = e.target.value;
+
+    setUsersHints(enteredText, usersData, selectedUsers);
+    setHintsDisplay(true);
+  };
+
   /**
    * Change event handler to handle any change in search field
    * @param {*} e
    */
-  const changeHandler = (e) => {
-    const enteredText = e.target.value;
-    if (enteredText.trim() === "") {
-      setUsersHint([]);
-    } else {
-      const hints = usersData.filter((user) => {
-        const pattern = new RegExp(enteredText, "i");
-        if (pattern.test(user.name)) {
-          //do not add user in hint list if user already exist in selected user list
-          const alreadySelectedUser = selectedUsers.find((selectedUser) => {
-            return selectedUser.guid === user.guid;
-          });
-          return !alreadySelectedUser;
-        }
-      });
-
-      setHintsDisplay(true);
-      setUsersHint(hints);
-    }
-  };
+  const changeHandler = debounce((e) => createHintList(e), 200);
 
   /**
    * Click handler triggered by selecting user from auto complete hints
@@ -95,6 +86,7 @@ function App() {
           onClickHint={hintClickHandler}
         ></AutoCompleteList>
       )}
+
       {selectedUsers.length > 0 && (
         <Pills
           selectedUsers={selectedUsers}
